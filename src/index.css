@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* CSS */
+.button-59 {
+  align-items: center;
+  width:50%;
+  margin: auto;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-59:focus {
+  color: #171e29;
+}
+
+.button-59:hover {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+.button-59:active {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+@media (min-width: 768px) {
+  .button-59 {
+    min-width: 170px;
+  }
+}
