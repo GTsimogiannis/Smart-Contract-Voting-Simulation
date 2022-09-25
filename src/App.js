@@ -16,7 +16,7 @@ function App() {
     let provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    const votingSimulation = new ethers.Contract("0xF05217Ffe7BAF3184FE4f3a46A2ec34693c1Dafa",contractAbi,signer);
+    const votingSimulation = new ethers.Contract("0xfD736f01783A73ef469823Ee3d76Cab90168e0bb",contractAbi,signer);
 
     let gasPrice = await provider.getGasPrice();
 
@@ -36,7 +36,7 @@ function App() {
     let provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    const votingSimulation = new ethers.Contract("0xF05217Ffe7BAF3184FE4f3a46A2ec34693c1Dafa",contractAbi,signer);
+    const votingSimulation = new ethers.Contract("0xfD736f01783A73ef469823Ee3d76Cab90168e0bb",contractAbi,signer);
     
     
     let gasPrice = await provider.getGasPrice();
@@ -58,7 +58,7 @@ function App() {
     let provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    const votingSimulation = new ethers.Contract("0xF05217Ffe7BAF3184FE4f3a46A2ec34693c1Dafa",contractAbi,signer);
+    const votingSimulation = new ethers.Contract("0xfD736f01783A73ef469823Ee3d76Cab90168e0bb",contractAbi,signer);
     const voteWinner = await votingSimulation.viewWinner();
     await setWinner(voteWinner);
   }
@@ -67,7 +67,7 @@ function App() {
     let provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    const votingSimulation = new ethers.Contract("0xF05217Ffe7BAF3184FE4f3a46A2ec34693c1Dafa",contractAbi,signer);
+    const votingSimulation = new ethers.Contract("0xfD736f01783A73ef469823Ee3d76Cab90168e0bb",contractAbi,signer);
     const theVoteReport = await votingSimulation.viewVotes();
    
     let allVotes = [];
@@ -161,7 +161,7 @@ function App() {
         <div style={{display:"flex", flexWrap:"wrap"}}>
         {
           CenterVoteReport.map((center, index)=>{
-            return(<div style={{flexBasis:"20%"}}><h2>Voting Center №{index+1}</h2>
+            return(<div style={{flexBasis:"20%"}}><h2>Voting Center №{index+1} - {center.length} votes</h2>
               {center.map((voter,index)=>{
                 return(<p>№{voter[1]+1} {addresses[voter[1]].substring(0,6)}...{addresses[voter[1]].substring(38,44)} - voted for {voter[0]+1}</p>)
               })}
