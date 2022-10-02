@@ -17,7 +17,7 @@ function App() {
     let provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    const votingSimulation = new ethers.Contract("0xfD736f01783A73ef469823Ee3d76Cab90168e0bb",contractAbi,signer);
+    const votingSimulation = new ethers.Contract("0xF05217Ffe7BAF3184FE4f3a46A2ec34693c1Dafa",contractAbi,signer);
 
     let gasPrice = await provider.getGasPrice();
 
