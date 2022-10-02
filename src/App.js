@@ -11,6 +11,7 @@ function App() {
   let [CenterVoteReport, setCenterVoteReport] = React.useState("");
   let [partiesVotes, setPartiesVotes] = React.useState("");
   let [addresses, setAddresses] = React.useState("");
+  let [votesPerCenter, setVotesPerCenter] = React.useState("");
 
   async function generateVoters(){
     let provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -30,6 +31,7 @@ function App() {
     setWinner("");
     setCenterVoteReport("");
     setPartiesVotes("");
+    setVotesPerCenter("");
   }
 
   async function simulateVoting(){
@@ -52,6 +54,7 @@ function App() {
     setWinner("");
     setCenterVoteReport("");
     setPartiesVotes("");
+    setVotesPerCenter("");
   }
 
   async function showTheWinner(){
@@ -77,18 +80,33 @@ function App() {
     }
 
     let votingCenters = [];
-    let receivedAddresses = new Array(100).fill("");;
+   
+    let receivedAddresses = new Array(100).fill("");
 
     for (let i=1; i<theVoteReport.length-1; i++){
       votingCenters[i] = [];
       for (let j=0; j<theVoteReport[i].length; j++){
        
-        votingCenters[i].push([parseInt(theVoteReport[i][j][0]), parseInt(theVoteReport[i][j][1])])
+        votingCenters[i].push([parseInt(allVotes[theVoteReport[i][j][1]]), parseInt(theVoteReport[i][j][1])])
         receivedAddresses[theVoteReport[i][j][1]] = (theVoteReport[i][j][3].toString())
-      
       }
     }
     votingCenters.splice(0,1)
+
+
+    let votesPerCenterPerParty = [];
+    for (let i = 0; i<10; i++){
+      votesPerCenterPerParty.push([0,0,0,0,0]);
+    }
+
+    let vote;
+    for(let i =0; i<votingCenters.length; i++){
+      
+      for (let j=0; j<votingCenters[i].length; j++){
+      vote = votingCenters[i][j][0];
+      votesPerCenterPerParty[i][allVotes[votingCenters[i][j][1]]]++;
+      }
+    }
     
 
     let partyVotes = [];
@@ -100,7 +118,7 @@ function App() {
     setVoteReport(allVotes);
     setCenterVoteReport(votingCenters);
     setAddresses(receivedAddresses);
-    
+    setVotesPerCenter(votesPerCenterPerParty);
   }
 
   return (
@@ -162,6 +180,11 @@ function App() {
         {
           CenterVoteReport.map((center, index)=>{
             return(<div style={{flexBasis:"20%"}}><h2>Voting Center №{index+1} - {center.length} votes</h2>
+            <h3>Party №1 - {votesPerCenter[index][0]} votes</h3>
+            <h3>Party №2 - {votesPerCenter[index][1]} votes</h3>
+            <h3>Party №3 - {votesPerCenter[index][2]} votes</h3>
+            <h3>Party №4 - {votesPerCenter[index][3]} votes</h3>
+            <h3>Party №5 - {votesPerCenter[index][4]} votes</h3>
               {center.map((voter,index)=>{
                 return(<p>№{voter[1]+1} {addresses[voter[1]].substring(0,6)}...{addresses[voter[1]].substring(38,44)} - voted for {voter[0]+1}</p>)
               })}
